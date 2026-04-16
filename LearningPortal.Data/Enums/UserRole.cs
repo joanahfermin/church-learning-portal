@@ -7,7 +7,6 @@ namespace LearningPortal.Data.Enums
     public enum UserRole
     {
         Client,
-        Admin,
-        Instructor
+        Admin
     }
 }

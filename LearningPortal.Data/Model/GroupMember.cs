@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LearningPortal.Data.Model
 {
-    public class GroupMember
+    public class GroupMember : AuditableEntity
     {
         public long GroupId { get; set; }
         public long ClientId { get; set; }

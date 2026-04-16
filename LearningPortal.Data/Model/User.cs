@@ -6,7 +6,7 @@ using System.Text;
 namespace LearningPortal.Data.Model
 {
     //Represents an authenticated identity. Contains only auth-related fields — profile and learning activity are handled by the Client entity.
-    public class User
+    public class User : AuditableEntity
     {
         public string Email { get; set; }
         public string PasswordHash { get; set; }

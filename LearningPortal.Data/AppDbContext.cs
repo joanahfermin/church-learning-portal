@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LearningPortal.Data
 {
-    public class AppDbContext : IdentityDbContext<AuditableEntity>
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

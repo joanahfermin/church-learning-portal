@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace LearningPortal.Data.Model
 {
-    public class AuditableEntity: IdentityUser
+    public class AuditableEntity
     {
         [Key]
         public long Id { get; set; }
