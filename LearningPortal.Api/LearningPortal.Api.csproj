@@ -1,8 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
-	  <PackageReference Include="BCrypt.Net-Next" />
 	  <PackageReference Include="BCrypt.Net-Next" />
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
@@ -15,10 +14,15 @@
 	  </PackageReference>
 	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
 	  <PackageReference Include="MySql.EntityFrameworkCore" />
+	  <PackageReference Include="Scalar.AspNetCore" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LearningPortal.Data\LearningPortal.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
