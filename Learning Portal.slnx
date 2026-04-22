@@ -3,5 +3,6 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
   </Folder>
+  <Project Path="LearningPortal.Api/LearningPortal.Api.csproj" Id="59b0b16c-d140-478b-b01f-aae89be30d1a" />
   <Project Path="LearningPortal.Data/LearningPortal.Data.csproj" />
 </Solution>
