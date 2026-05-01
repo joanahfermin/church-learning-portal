@@ -1,3 +1,5 @@
+using LearningPortal.Api.Services;
+using LearningPortal.Api.Services.Interfaces;
 using LearningPortal.Data;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
@@ -9,6 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<IGroupService, GroupService>();
+
+
+// Register DbContext
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
