@@ -6,9 +6,9 @@ namespace LearningPortal.Data.Model
 {
     public class Group : AuditableEntity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = String.Empty;
         public string? Description { get; set; }
 
-        public ICollection<GroupMember> Members { get; set; }
+        public ICollection<GroupMember> Members { get; set; } = [];
     }
 }

@@ -8,8 +8,8 @@ namespace LearningPortal.Data.Model
     //Represents an authenticated identity. Contains only auth-related fields — profile and learning activity are handled by the Client entity.
     public class User : AuditableEntity
     {
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
+        public string Email { get; set; } = String.Empty;
+        public string PasswordHash { get; set; } = String.Empty;
         public UserRole Role{ get; set; }  = UserRole.Client;
         public bool IsActive { get; set; } = true;
 

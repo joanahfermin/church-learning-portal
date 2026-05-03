@@ -9,9 +9,9 @@ namespace LearningPortal.Data.Model
     public class Client : AuditableEntity
     {
         public long UserId { get; set; }
-        public string FullName { get; set; }
+        public string FullName { get; set; } = String.Empty;
 
-        public User User { get; set; }
-        public ICollection<GroupMember> GroupMembers{ get; set; }
+        public User User { get; set; } = null!;
+        public ICollection<GroupMember> GroupMembers{ get; set; } = [];
     }
 }
