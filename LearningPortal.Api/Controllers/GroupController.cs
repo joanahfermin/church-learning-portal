@@ -40,14 +40,14 @@ namespace LearningPortal.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateGroupDTO createGroupDTO)
         {
-            return Ok(await _groupService.CreateGroupAsync(createGroupDTO.Adapt<GroupDTO>()));
+            return Ok(await _groupService.CreateGroupAsync(createGroupDTO.Adapt<CreateGroupDTO>()));
         }
 
         //PUT: api/Group/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(long id, UpdateGroupDTO groupDto)
         {
-            return Ok(await _groupService.UpdateGroupAsync(id, groupDto.Adapt<GroupDTO>()));
+            return Ok(await _groupService.UpdateGroupAsync(id, groupDto.Adapt<UpdateGroupDTO>()));
         }
 
         //DELETE: api/Group/{id}

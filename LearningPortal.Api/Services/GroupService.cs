@@ -26,10 +26,11 @@ namespace LearningPortal.Api.Services
         public async Task<GroupDTO> GetGroupByIdAsync(long id)
         {
             var group = await _context.Groups.FindAsync(id);
-            return group.Adapt<GroupDTO>();
+            if (group == null) throw new KeyNotFoundException("Group not found.");
+                return group.Adapt<GroupDTO>();
         }
 
-        public async Task<GroupDTO> CreateGroupAsync(GroupDTO group)
+        public async Task<GroupDTO> CreateGroupAsync(CreateGroupDTO group)
         {
             var entity = group.Adapt<Group>();
             _context.Groups.Add(entity);
@@ -37,10 +38,10 @@ namespace LearningPortal.Api.Services
             return entity.Adapt<GroupDTO>();
         }
 
-        public async Task<GroupDTO> UpdateGroupAsync(long id, GroupDTO group)
+        public async Task<GroupDTO> UpdateGroupAsync(long id, UpdateGroupDTO group)
         {
             var entity = await _context.Groups.FindAsync(id);
-            if (entity == null) return null;
+            if (entity == null) throw new KeyNotFoundException("Group not found.");
             
             entity.Name = group.Name;
             entity.Description = group.Description;
