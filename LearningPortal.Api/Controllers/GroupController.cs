@@ -13,12 +13,10 @@ namespace LearningPortal.Api.Controllers
     [Route("api/[controller]")]
     public class GroupController : Controller
     {
-        private readonly AppDbContext _context;
         private readonly IGroupService _groupService;
 
-        public GroupController(AppDbContext context, IGroupService groupService)
+        public GroupController(IGroupService groupService)
         {
-            _context = context;
             _groupService = groupService;
         }
 
@@ -33,21 +31,41 @@ namespace LearningPortal.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(long id)
         {
-            return Ok(await _groupService.GetGroupByIdAsync(id));
+            try
+            {
+                return Ok(await _groupService.GetGroupByIdAsync(id));
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound("Group not found.");
+            }        
         }
 
         //POST: api/Group
         [HttpPost]
         public async Task<IActionResult> Create(CreateGroupDTO createGroupDTO)
         {
-            return Ok(await _groupService.CreateGroupAsync(createGroupDTO.Adapt<CreateGroupDTO>()));
+            var result = await _groupService.CreateGroupAsync(createGroupDTO);
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = result.Id },
+                result
+                );
         }
+
 
         //PUT: api/Group/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(long id, UpdateGroupDTO groupDto)
         {
-            return Ok(await _groupService.UpdateGroupAsync(id, groupDto.Adapt<UpdateGroupDTO>()));
+            try
+            {
+                return Ok(await _groupService.UpdateGroupAsync(id, groupDto.Adapt<UpdateGroupDTO>()));
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound("Group not found.");
+            }
         }
 
         //DELETE: api/Group/{id}
