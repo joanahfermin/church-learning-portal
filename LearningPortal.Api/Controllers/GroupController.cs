@@ -66,6 +66,10 @@ namespace LearningPortal.Api.Controllers
             {
                 return NotFound("Group not found.");
             }
+            catch (InvalidOperationException)
+            {
+                return Conflict("This version is outdated.");
+            }
         }
 
         //DELETE: api/Group/{id}

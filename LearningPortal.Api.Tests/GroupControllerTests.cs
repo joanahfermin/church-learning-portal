@@ -148,4 +148,20 @@ public class GroupControllerTests
         // Assert
         Assert.IsInstanceOfType(result, typeof(NotFoundObjectResult));
     }
+
+    [TestMethod]
+    public async Task UpdateGroup_ReturnsConflict_WhenGroupVersionIsOutdated()
+    {
+        // Arrange
+        var mockService = new Mock<IGroupService>();
+        mockService.Setup(s => s.UpdateGroupAsync(1, It.IsAny<UpdateGroupDTO>()))
+                   .ThrowsAsync(new InvalidOperationException("Version conflict"));
+        var controller = new GroupController(mockService.Object);
+
+        // Act
+        var result = await controller.Update(1, new UpdateGroupDTO(1, "Updated Group", "Updated Description"));
+
+        // Assert
+        Assert.IsInstanceOfType(result, typeof(ConflictObjectResult));
+    }
 }

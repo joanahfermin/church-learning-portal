@@ -42,9 +42,15 @@ namespace LearningPortal.Api.Services
         {
             var entity = await _context.Groups.FindAsync(id);
             if (entity == null) throw new KeyNotFoundException("Group not found.");
-            
+
+            if (entity.Version != group.Version)
+            {
+                throw new InvalidOperationException("This version is outdated.");
+            }
+
             entity.Name = group.Name;
             entity.Description = group.Description;
+            entity.Version = group.Version + 1;
 
             await _context.SaveChangesAsync();
             return entity.Adapt<GroupDTO>();
