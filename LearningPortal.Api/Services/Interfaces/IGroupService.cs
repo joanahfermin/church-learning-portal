@@ -6,8 +6,8 @@ namespace LearningPortal.Api.Services.Interfaces
     {
         Task<IEnumerable<GroupDTO>> GetAllGroupsAsync();
         Task<GroupDTO> GetGroupByIdAsync(long id);
-        Task<GroupDTO> CreateGroupAsync(GroupDTO group);
-        Task<GroupDTO> UpdateGroupAsync(long id, GroupDTO group);
+        Task<GroupDTO> CreateGroupAsync(CreateGroupDTO group);
+        Task<GroupDTO> UpdateGroupAsync(long id, UpdateGroupDTO group);
         Task<bool> DeleteGroupAsync(long id);
     }
 }
