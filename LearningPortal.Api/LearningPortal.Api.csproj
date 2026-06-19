@@ -1,24 +1,35 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <PropertyGroup>
+    <ApiGenerator_ModelNamespace>LearningPortal.Data.Model</ApiGenerator_ModelNamespace>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <CompilerVisibleProperty Include="ApiGenerator_ModelNamespace" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Mapster" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
-	  <PackageReference Include="BCrypt.Net-Next" />
-	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	  <PackageReference Include="MySql.EntityFrameworkCore" />
-	  <PackageReference Include="Scalar.AspNetCore" />
+    <PackageReference Include="MySql.EntityFrameworkCore" />
+    <PackageReference Include="Scalar.AspNetCore" />
+    <PackageReference Include="Scrutor" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LearningPortal.Data\LearningPortal.Data.csproj" />
+    <ProjectReference Include="..\LearningPortal.Api.SourceGenerators\LearningPortal.Api.SourceGenerators.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>
